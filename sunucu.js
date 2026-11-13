@@ -67,7 +67,7 @@ function htmlSonuc(sonuc, hata) {
   const ozet = hata
     ? '<p role="status">' + kac(hata) + '</p>'
     : '<p role="status">' + sonuc.tamam + ' tamam, ' + sonuc.hata + ' hata. Çıktı, dosyanın yanındaki ' + kac(sonuc.klasor) + ' klasörüne yazıldı.</p>';
-  return '<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8"><title>Sonuç | SLDPRT GLB</title></head><body><main><h1>Sonuç</h1>'
+  return '<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8"><title>Sonuç | 3d model çevirici</title></head><body><main><h1>Sonuç</h1>'
     + ozet + '<ul>' + satirlar + '</ul><p><a href="/">Geri</a></p></main></body></html>';
 }
 

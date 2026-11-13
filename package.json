@@ -1,7 +1,7 @@
 {
-  "name": "sldprt-glb",
+  "name": "3d-model-cevirici",
   "version": "1.0.0",
-  "description": "3B model dosyalarını GLB, OBJ, STL, PLY, Collada ve STEP biçimlerine çevirir.",
+  "description": "3d model çevirici. SLDPRT, STEP, FBX, OBJ ve benzerlerini GLB, STL veya STEP yapar.",
   "engines": {
     "node": ">=18"
   },

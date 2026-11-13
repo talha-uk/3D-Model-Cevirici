@@ -188,7 +188,10 @@ test('sldprt step katı yazar ve kilit dosyasını reddeder', async () => {
     assert.match(metin, /ISO-10303-21/);
     assert.match(metin, /MANIFOLD_SOLID_BREP|CLOSED_SHELL|ADVANCED_FACE/);
     assert.match(sonuc.satirlar[0].kaynak, /katı/);
-    await assert.rejects(() => donusturDosyalar([kilit], kok, 'glb'), /kilit dosyası/);
+    const birlikte = await donusturDosyalar([ornek, kilit], kok, 'glb');
+    assert.strictEqual(birlikte.tamam, 1);
+    assert.strictEqual(birlikte.hata, 1);
+    assert.match(birlikte.satirlar.find((satir) => !satir.tamam).hata, /kilit dosyası/);
   } finally {
     fs.rmSync(kok, { recursive: true, force: true });
   }

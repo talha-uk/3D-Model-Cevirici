@@ -13,7 +13,6 @@
     <form id="form" action="/api/donustur" method="post" aria-labelledby="baslik">
       <button type="button" id="sec">Dosya seç</button>
       <p id="sec-hata" class="hata" hidden></p>
-      <ul id="secilen"></ul>
       <label for="hedef">Hedef biçim</label>
       <select id="hedef" name="hedef" required>
         <optgroup label="Ağ">
@@ -29,6 +28,7 @@
         </optgroup>
       </select>
       <button type="submit" id="gonder">Dönüştür</button>
+      <ul id="secilen"></ul>
     </form>
 
     <section aria-labelledby="sonuc-baslik">

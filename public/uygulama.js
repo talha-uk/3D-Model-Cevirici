@@ -15,7 +15,10 @@ let secilen = [];
 function hataGoster(metin) {
   secHata.hidden = !metin;
   secHata.textContent = metin || '';
-  if (metin) sec.focus();
+  if (metin) {
+    durum.textContent = metin;
+    sec.focus();
+  }
 }
 
 function listeyiCiz() {
@@ -109,7 +112,7 @@ form.addEventListener('submit', async (olay) => {
   }
   gonder.disabled = true;
   hataGoster('');
-  durum.textContent = '';
+  durum.textContent = 'Dönüştürülüyor.';
   sonuclar.replaceChildren();
   ilerlemeKutu.hidden = false;
   ilerleme.removeAttribute('value');
@@ -152,7 +155,10 @@ form.addEventListener('submit', async (olay) => {
           ilerleme.value = biten;
           satirEkle(olayKaydi);
         } else if (olayKaydi.tur === 'bitti') {
-          durum.textContent = olayKaydi.tamam + ' tamam, ' + olayKaydi.hata + ' hata. Çıktı, dosyanın yanındaki ' + olayKaydi.klasor + ' klasörüne yazıldı.';
+          let ozet = olayKaydi.tamam + ' tamam';
+          if (olayKaydi.hata) ozet += ', ' + olayKaydi.hata + ' hata';
+          if (olayKaydi.tamam) ozet += '. Klasör: ' + olayKaydi.klasor;
+          durum.textContent = ozet + '.';
         }
       }
       if (done) break;

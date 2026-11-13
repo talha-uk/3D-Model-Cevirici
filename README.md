@@ -1,6 +1,6 @@
-# 3d model çevirici
+# 3D Model Çevirici
 
-Yerel bir 3d model çevirici. Dosyayı seçersin, hedef biçimi seçersin, çıktı o dosyanın yanında yeni bir klasöre yazılır.
+Dosyayı seçersin, hedef biçimi seçersin, çıktı o dosyanın yanında yeni bir klasöre yazılır.
 
 ## Çalıştırma
 

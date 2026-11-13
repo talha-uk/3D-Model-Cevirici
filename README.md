@@ -4,7 +4,7 @@ Yerel bir 3B model çevirici. Dosyayı seçersin, hedef biçimi seçersin, çık
 
 ## Çalıştırma
 
-Node.js 18 veya üstü gerekir. Dosya penceresi için Python 3 ve Tk gerekir. Ubuntu’da paket adı `python3-tk`.
+Node.js 18 veya üstü gerekir. Dosya penceresi için Python 3, PyGObject ve GTK 3 gerekir. Ubuntu’da paket adları `python3-gi` ve `gir1.2-gtk-3.0`.
 
 ```bash
 npm install

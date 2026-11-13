@@ -6,7 +6,7 @@ const path = require('path');
 const test = require('node:test');
 const { bilinenDosya } = require('../lib/bicim');
 const { glbYaz, glbOku } = require('../lib/glb');
-const { secimleriOku, yolNesnesiOku } = require('../lib/sec');
+const { secimleriOku, pencereHazir } = require('../lib/sec');
 const { donustur, donusturDosyalar } = require('../lib/donustur');
 const { YolHatasi, varOlan } = require('../lib/yol');
 
@@ -94,19 +94,24 @@ test('birden fazla parça seçimi okunur ve yan yana yazılır', async () => {
   }
 });
 
-test('çoklu seçimin yol nesnesi listeye döner', async () => {
+test('çoklu seçimin yol nesnesi listeye döner', () => {
   const kok = fs.mkdtempSync(path.join(__dirname, 'cikti-'));
   const bir = path.join(kok, 'bir.SLDPRT');
   const iki = path.join(kok, 'iki parca.SLDPRT');
   fs.writeFileSync(bir, 'x');
   fs.writeFileSync(iki, 'x');
   try {
-    const secim = await yolNesnesiOku([bir, iki]);
+    const secim = secimleriOku(bir + '\0' + iki);
     assert.deepStrictEqual(secim.map((dosya) => dosya.ad), ['bir.SLDPRT', 'iki parca.SLDPRT']);
     assert.deepStrictEqual(secim.map((dosya) => dosya.yol), [bir, iki].sort((a, b) => path.basename(a).localeCompare(path.basename(b), 'tr')));
   } finally {
     fs.rmSync(kok, { recursive: true, force: true });
   }
+});
+
+test('dosya penceresi hazırlanır', async () => {
+  const dosyalar = await pencereHazir();
+  assert.deepStrictEqual(dosyalar, []);
 });
 
 test('GLB parçanın yanındaki glb klasörüne yazılır', async () => {

@@ -1,0 +1,94 @@
+:root {
+  color-scheme: light dark;
+  --metin: #1c1917;
+  --zemin: #faf7f2;
+  --cizgi: #57534e;
+  --vurgu: #9a3412;
+  --hata: #991b1b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --metin: #f5f0e8;
+    --zemin: #1c1917;
+    --cizgi: #a8a29e;
+    --vurgu: #fdba74;
+    --hata: #fecaca;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--zemin);
+  color: var(--metin);
+  font-family: system-ui, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+main {
+  max-width: 40rem;
+  margin-inline: auto;
+  padding: 1.5rem;
+}
+
+button,
+select {
+  font: inherit;
+  font-size: max(1rem, 1em);
+  min-height: 48px;
+  box-sizing: border-box;
+}
+
+button {
+  padding-inline: 1rem;
+  margin-inline-end: 0.5rem;
+  margin-block-end: 0.5rem;
+}
+
+label {
+  display: block;
+  margin-block: 1rem 0.25rem;
+}
+
+select {
+  margin-block-end: 0.25rem;
+  max-width: 100%;
+}
+
+#hedef-not {
+  margin-block: 0 1rem;
+}
+
+#secilen {
+  padding-inline-start: 1.2rem;
+}
+
+#secilen li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+progress {
+  accent-color: var(--vurgu);
+  inline-size: 100%;
+  margin-block: 0.5rem 1rem;
+}
+
+:where(a:any-link, button, input, select):focus-visible {
+  outline: 3px solid var(--vurgu);
+  outline-offset: 2px;
+}
+
+.hata {
+  color: var(--hata);
+}
+
+@media (pointer: coarse) {
+  button,
+  select {
+    min-height: 52px;
+  }
+}

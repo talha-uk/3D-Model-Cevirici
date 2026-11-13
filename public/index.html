@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3B çevirici</title>
+  <link rel="stylesheet" href="/stil.css">
+</head>
+<body>
+  <main>
+    <h1 id="baslik">3B model çevir</h1>
+    <p id="yardim">Ctrl veya Shift ile birden fazla model seçilir. Dosya seç yeniden açılınca listeye eklenir. Çıktı, dosyanın yanında hedef biçimin klasörüne yazılır. Okunan biçimler: SLDPRT, STEP, IGES, BREP, FBX, glTF, GLB, OBJ, STL, PLY, Collada, 3DS, 3MF, OFF, DXF. Yazılan biçimler: GLB, glTF, OBJ, STL, PLY, Collada ve STEP. Renk ve iskelet taşınmaz. Kilit dosyası ve montaj dönüşmez.</p>
+
+    <form id="form" action="/api/donustur" method="post" aria-labelledby="baslik">
+      <button type="button" id="sec" aria-describedby="yardim">Dosya seç</button>
+      <p id="sec-hata" class="hata" hidden></p>
+      <ul id="secilen"></ul>
+      <label for="hedef">Hedef biçim</label>
+      <select id="hedef" name="hedef" required aria-describedby="hedef-not">
+        <optgroup label="Ağ">
+          <option value="glb" selected>GLB</option>
+          <option value="gltf">glTF</option>
+          <option value="obj">OBJ</option>
+          <option value="stl">STL</option>
+          <option value="ply">PLY</option>
+          <option value="dae">Collada</option>
+        </optgroup>
+        <optgroup label="CAD">
+          <option value="step">STEP</option>
+        </optgroup>
+      </select>
+      <p id="hedef-not">SLDPRT dosyasından STEP katı modeldir ve milimetredir. Başka dosyadan STEP üçgen kabuktur. Ağ dosyasında koordinat ölçeklenmez. SLDPRT ağı metredir.</p>
+      <button type="submit" id="gonder">Dönüştür</button>
+    </form>
+
+    <section aria-labelledby="sonuc-baslik">
+      <h2 id="sonuc-baslik">Sonuç</h2>
+      <div id="ilerleme-kutu" hidden>
+        <label for="ilerleme">İlerleme</label>
+        <progress id="ilerleme" max="1" value="0"></progress>
+      </div>
+      <p id="durum" role="status"></p>
+      <ul id="sonuclar"></ul>
+    </section>
+  </main>
+  <script src="/uygulama.js"></script>
+</body>
+</html>
